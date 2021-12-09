@@ -1,5 +1,7 @@
 
 const game = () => {
+        let computerScore = 0;
+        let playerScore = 0;
       for (let i = 1; i < 6; i++) {
         const computerPlay = () => {
           let array = ["rock", "paper", "scissors"];
@@ -21,17 +23,25 @@ const game = () => {
             (computerSelection === "paper" && playerSelection === "rock") ||
             (computerSelection === "rock" && playerSelection === "scissors") ||
             (computerSelection === "scissors" && playerSelection === "paper")
+     
           ) {
-            return `Round ${i}\n${computerSelection} ${playerSelection}\nYou lose! ${computerSelection} beats ${playerSelection}.`;
+            return computerScore++, `Round ${i}\n${computerSelection} ${playerSelection}\nYou lose! ${computerSelection} beats ${playerSelection}.`;
           } else if (
             (computerSelection === "scissors" && playerSelection === "rock") ||
             (computerSelection === "paper" && playerSelection === "scissors") ||
             (computerSelection === "rock" && playerSelection === "paper")
           ) {
-            return `Round ${i}\n${computerSelection} ${playerSelection}\nYou win! ${playerSelection} beats ${computerSelection}.`;
+            return playerScore++, `Round ${i}\n${computerSelection} ${playerSelection}\nYou win! ${playerSelection} beats ${computerSelection}.`;
           }
         };
         console.log(playRound(playerSelection, computerSelection));
+      }
+      if (playerScore < computerScore) {
+          console.log(`Computer ${computerScore}\nPlayer ${playerScore}\nComputer Wins!`)
+      } else if (playerScore > computerScore) {
+          console.log(`Computer ${computerScore}\nPlayer ${playerScore}\nYou Win!`);
+      } else {
+          console.log(`Computer ${computerScore}\nPlayer ${playerScore}\nIt's a draw! Play again.`);
       }
 
 };
